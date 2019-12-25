@@ -5,7 +5,6 @@
 
   {{ $PageContext := . }}
   {{ $Pages := $PageContext.RegularPages }}
-  {{ .IsHome}}
   {{ if .IsHome }}
     {{ $PageContext = .Data }}
     {{ $Pages = $PageContext.Pages }}
