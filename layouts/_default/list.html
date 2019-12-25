@@ -4,10 +4,13 @@
   {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
 
   {{ $PageContext := . }}
+  {{ $Pages := $PageContext.RegularPages }}
+  {{ .IsHome}}
   {{ if .IsHome }}
-    {{ $PageContext = .Site }}
+    {{ $PageContext = .Data }}
+    {{ $Pages = $PageContext.Pages }}
   {{ end }}
-  {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
+  {{ $paginator := .Paginate (where $Pages "Type" $contentTypeName) }}
 
   {{ range $paginator.Pages }}
   <div class="post on-list">
